@@ -35,11 +35,39 @@ public class CanvasPanel extends JPanel
 		previousY = Integer.MAX_VALUE;
 	}
 	
+	public void drawDot(int currentX, int currentY, int width)
+	{
+		Graphics2D currentGraphics = currentCanvas.createGraphics();
+		currentGraphics.setColor(currentColor);
+		currentGraphics.setStroke(new BasicStroke(width));
+		repaint();
+	}
+	
+	public void drawLine(int currentX, int currentY, int width)
+	{
+		Graphics2D currentGraphics = currentCanvas.createGraphics();
+		currentGraphics.setColor(currentColor);
+		currentGraphics.setStroke(new BasicStroke(width));
+		if (previousX == Integer.MIN_VALUE) 
+		{
+		currentGraphics.drawOval(currentX, currentY, width, width);
+		}
+		else
+		{
+			currentGraphics.drawLine(previousX, previousY, currentX, currentY);
+		}
+		
+		previousX = currentX;
+		previousY = currentY;
+		repaint();
+	}
+	
 	public void setupPanel()
 	{
 		this.setPreferredSize(new Dimension(700, 700));
 		this.setBackground(Color.RED);
 		this.currentColor = Color.CYAN;
 	}
+	
 	
 }
