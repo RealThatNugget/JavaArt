@@ -12,6 +12,8 @@ public class ArtPanel extends JPanel
 	private SpringLayout layout;
 	private JLabel demoLabel;
 	private CanvasPanel canvas;
+	private JButton saveButton;
+	private JButton loadButton;
 	
 	public ArtPanel(Controller app)
 	{
@@ -21,6 +23,8 @@ public class ArtPanel extends JPanel
 		this.canvas = new CanvasPanel(app);
 		this.layout = new SpringLayout();
 		this.demoLabel = new JLabel("Placeholder Text");
+		this.saveButton = new JButton("Save Image?");
+		this.loadButton = new JButton("Load Image?");
 		
 		setupPanel();
 		setupListeners();
@@ -33,12 +37,15 @@ public class ArtPanel extends JPanel
 		this.setBackground(Color.ORANGE);
 		this.add(demoLabel);
 		this.add(canvas);
+		this.add(loadButton);
+		this.add(saveButton);
 	}
 	
 	private void setupListeners()
 	{
 		canvas.addMouseMotionListener(new MouseMotionListener()
 		{
+				
 			public void mouseDragged(MouseEvent drag)
 			{
 				int x = drag.getX();
@@ -90,6 +97,10 @@ public class ArtPanel extends JPanel
 			}
 			
 		});
+		
+		saveButton.addActionListener(click -> canvas.saveImage());
+		loadButton.addActionListener(click -> canvas.loadImage());
+		
 	}
 	
 	private void setupLayout()

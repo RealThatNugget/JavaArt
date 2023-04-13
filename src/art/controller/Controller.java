@@ -19,4 +19,9 @@ public class Controller
 		this.frame = new ArtFrame(this);
 	}
 	
+	public void handleError(Exception error)
+	{
+		JOptionPane.showMessageDialog(frame,  error.getMessage(), "Whoops?", JOptionPane.ERROR_MESSAGE);
+	}
+	
 }

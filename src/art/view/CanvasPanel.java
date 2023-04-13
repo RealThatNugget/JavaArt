@@ -7,6 +7,7 @@ import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CanvasPanel extends JPanel
 {
@@ -69,5 +70,56 @@ public class CanvasPanel extends JPanel
 		this.currentColor = Color.CYAN;
 	}
 	
+	public void saveImage()
+	{
+		try
+		{
+			JFileChooser saveDialog = new JFileChooser();
+			saveDialog.showSaveDialog(this);
+			String savePath = saveDialog.getSelectedFile().getPath();
+			
+			if (!savePath.endsWith(".png"))
+			{
+				savePath += ".png";
+			}
+			
+			ImageIO.write(currentCanvas, "PNG", new File(savePath));
+		}
+		catch (IOException | NullPointerException error)
+		{
+			app.handleError(error);
+		}
+	}
+	
+	public void loadImage()
+	{
+		try
+		{
+			JFileChooser imageChooser = new JFileChooser();
+			imageChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			FileNameExtensionFilter imageFilter = new FileNameExtensionFilter("Image Files Only!!", ImageIO.getReaderFileSuffixes());
+			
+			if (imageChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+			{
+				File resultingFile = imageChooser.getSelectedFile();
+				BufferedImage updatedCanvas = ImageIO.read(resultingFile);
+				currentCanvas = updatedCanvas;
+				
+				this.setPreferredSize(new Dimension(currentCanvas.getWidth(), currentCanvas.getHeight()));
+				
+			}
+			
+		}
+		catch (IOException error)
+		{
+			app.handleError(error);
+		}
+	}
+	
+	protected void paintComponent(Graphics graphics)
+	{
+		super.paintComponent(graphics);
+		graphics.drawImage(currentCanvas, 0, 0, null);
+	}
 	
 }
