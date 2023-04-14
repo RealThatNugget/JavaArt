@@ -12,6 +12,14 @@ public class ArtPanel extends JPanel
 	private SpringLayout layout;
 	private JLabel demoLabel;
 	private CanvasPanel canvas;
+	private JButton blackButton;
+	private JButton blueButton;
+	private JButton brownButton;
+	private JButton redButton;
+	private JButton greenButton;
+	private JButton purpleButton;
+	private JButton yellowButton;
+	private JButton choiceButton;
 	private JButton saveButton;
 	private JButton loadButton;
 	
