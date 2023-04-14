@@ -51,27 +51,6 @@ public class ArtPanel extends JPanel
 	
 	private void setupListeners()
 	{
-		canvas.addMouseMotionListener(new MouseMotionListener()
-		{
-				
-			public void mouseDragged(MouseEvent drag)
-			{
-				int x = drag.getX();
-				int y = drag.getY();
-				
-				canvas.drawLine(x, y, 25);
-			}
-
-			public void mouseMoved(MouseEvent move)
-			{
-				int x = move.getX();
-				int y = move.getY();
-				
-				String message = "tThe mouse is at X;" + x + " Y: " +  y;
-				demoLabel.setText(message);
-			}
-			
-		});
 		
 		canvas.addMouseListener(new MouseListener()
 		{
@@ -105,6 +84,30 @@ public class ArtPanel extends JPanel
 			}
 			
 		});
+		
+		canvas.addMouseMotionListener(new MouseMotionListener()
+		{
+				
+			public void mouseDragged(MouseEvent drag)
+			{
+				int x = drag.getX();
+				int y = drag.getY();
+				
+				canvas.drawLine(x, y, 25);
+			}
+
+			public void mouseMoved(MouseEvent move)
+			{
+				int x = move.getX();
+				int y = move.getY();
+				
+				String message = "tThe mouse is at X;" + x + " Y: " +  y;
+				demoLabel.setText(message);
+			}
+			
+		});
+		
+	
 		
 		saveButton.addActionListener(click -> canvas.saveImage());
 		loadButton.addActionListener(click -> canvas.loadImage());
