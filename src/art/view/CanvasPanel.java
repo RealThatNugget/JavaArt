@@ -66,8 +66,19 @@ public class CanvasPanel extends JPanel
 	public void setupPanel()
 	{
 		this.setPreferredSize(new Dimension(700, 1000));
-		this.setBackground(Color.RED);
-		this.currentColor = Color.CYAN;
+		this.setBackground(Color.WHITE);
+		this.currentColor = Color.BLACK;
+	}
+	
+	public void setColor()
+	{
+		
+	}
+	
+	public void eraseCanvas()
+	{
+		this.currentCanvas = new BufferedImage(700, 1000, BufferedImage.TYPE_INT_ARGB);
+		repaint();
 	}
 	
 	public void saveImage()

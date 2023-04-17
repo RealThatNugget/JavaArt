@@ -24,6 +24,7 @@ public class ArtPanel extends JPanel
 	private JButton choiceButton;
 	private JButton saveButton;
 	private JButton loadButton;
+	private JButton eraseButton;
 	
 	public ArtPanel(Controller app)
 	{
@@ -45,6 +46,7 @@ public class ArtPanel extends JPanel
 		this.purpleButton = new JButton("Purple");
 		this.yellowButton = new JButton("Yellow");
 		this.choiceButton = new JButton("Choose Your Color");
+		this.eraseButton = new JButton("Erase Canvas");
 		
 		setupPanel();
 		setupListeners();
@@ -60,6 +62,7 @@ public class ArtPanel extends JPanel
 		this.add(menuPanel);
 		menuPanel.add(loadButton);
 		menuPanel.add(saveButton);
+		menuPanel.add(eraseButton);
 		this.add(colorPanel);
 		colorPanel.add(blackButton);
 		colorPanel.add(blueButton);
@@ -123,7 +126,7 @@ public class ArtPanel extends JPanel
 				int x = move.getX();
 				int y = move.getY();
 				
-				String message = "tThe mouse is at X;" + x + " Y: " +  y;
+				String message = "The mouse is at X;" + x + " Y: " +  y;
 				demoLabel.setText(message);
 			}
 			
@@ -133,6 +136,8 @@ public class ArtPanel extends JPanel
 		
 		saveButton.addActionListener(click -> canvas.saveImage());
 		loadButton.addActionListener(click -> canvas.loadImage());
+		eraseButton.addActionListener(click -> canvas.eraseCanvas());
+		
 		
 	}
 	
