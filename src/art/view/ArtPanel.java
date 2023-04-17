@@ -142,6 +142,7 @@ public class ArtPanel extends JPanel
 		layout.putConstraint(SpringLayout.EAST, canvas, -50, SpringLayout.EAST, this);
 		layout.putConstraint(SpringLayout.SOUTH, canvas, -34, SpringLayout.SOUTH, this);
 		layout.putConstraint(SpringLayout.WEST, canvas, -750, SpringLayout.EAST, this);
-		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 50, SpringLayout.SOUTH, colorPanel);
+		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 56, SpringLayout.SOUTH, colorPanel);
+		layout.putConstraint(SpringLayout.NORTH, colorPanel, 17, SpringLayout.NORTH, this);
 	}
 }
