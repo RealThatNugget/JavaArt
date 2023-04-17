@@ -40,10 +40,10 @@ public class ArtPanel extends JPanel
 		this.colorPanel = new JPanel(new GridLayout(0,2));
 		this.blackButton = new JButton("Black");
 		this.blueButton = new JButton("Blue");
-		this.brownButton = new JButton("Brown");
+		this.brownButton = new JButton("Cyan");
 		this.redButton = new JButton("Red");
 		this.greenButton = new JButton("Green");
-		this.purpleButton = new JButton("Purple");
+		this.purpleButton = new JButton("Pink");
 		this.yellowButton = new JButton("Yellow");
 		this.choiceButton = new JButton("Choose Your Color");
 		this.eraseButton = new JButton("Erase Canvas");
@@ -72,6 +72,13 @@ public class ArtPanel extends JPanel
 		colorPanel.add(purpleButton);
 		colorPanel.add(yellowButton);
 		colorPanel.add(choiceButton);
+	}
+	
+	public void updateColor()
+	{
+		Color userColor = JColorChooser.showDialog(this, "Pick your color!", Color.WHITE);
+		canvas.setColor(userColor);
+		choiceButton.setBackground(userColor);
 	}
 	
 	private void setupListeners()
@@ -137,7 +144,14 @@ public class ArtPanel extends JPanel
 		saveButton.addActionListener(click -> canvas.saveImage());
 		loadButton.addActionListener(click -> canvas.loadImage());
 		eraseButton.addActionListener(click -> canvas.eraseCanvas());
-		
+		blackButton.addActionListener(click -> canvas.setColor(Color.BLACK));
+		blueButton.addActionListener(click -> canvas.setColor(Color.BLUE));
+		brownButton.addActionListener(click -> canvas.setColor(Color.CYAN));
+		redButton.addActionListener(click -> canvas.setColor(Color.RED));
+		greenButton.addActionListener(click -> canvas.setColor(Color.GREEN));
+		purpleButton.addActionListener(click -> canvas.setColor(Color.PINK));
+		yellowButton.addActionListener(click -> canvas.setColor(Color.YELLOW));
+		choiceButton.addActionListener(click -> updateColor());
 		
 	}
 	
@@ -147,7 +161,7 @@ public class ArtPanel extends JPanel
 		layout.putConstraint(SpringLayout.EAST, canvas, -50, SpringLayout.EAST, this);
 		layout.putConstraint(SpringLayout.SOUTH, canvas, -34, SpringLayout.SOUTH, this);
 		layout.putConstraint(SpringLayout.WEST, canvas, -750, SpringLayout.EAST, this);
-		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 56, SpringLayout.SOUTH, colorPanel);
+		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 86, SpringLayout.SOUTH, colorPanel);
 		layout.putConstraint(SpringLayout.NORTH, colorPanel, 17, SpringLayout.NORTH, this);
 	}
 }

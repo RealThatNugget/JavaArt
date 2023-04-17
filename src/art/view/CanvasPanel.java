@@ -70,9 +70,9 @@ public class CanvasPanel extends JPanel
 		this.currentColor = Color.BLACK;
 	}
 	
-	public void setColor()
+	public void setColor(Color color)
 	{
-		
+		this.currentColor = color;
 	}
 	
 	public void eraseCanvas()
