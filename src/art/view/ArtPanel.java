@@ -12,6 +12,8 @@ public class ArtPanel extends JPanel
 	private SpringLayout layout;
 	private JLabel demoLabel;
 	private CanvasPanel canvas;
+	private JPanel menuPanel;
+	private JPanel colorPanel;
 	private JButton blackButton;
 	private JButton blueButton;
 	private JButton brownButton;
@@ -33,6 +35,16 @@ public class ArtPanel extends JPanel
 		this.demoLabel = new JLabel("Placeholder Text");
 		this.saveButton = new JButton("Save Image?");
 		this.loadButton = new JButton("Load Image?");
+		this.menuPanel = new JPanel(new GridLayout(0,1));
+		this.colorPanel = new JPanel(new GridLayout(0,2));
+		this.blackButton = new JButton("Black");
+		this.blueButton = new JButton("Blue");
+		this.brownButton = new JButton("Brown");
+		this.redButton = new JButton("Red");
+		this.greenButton = new JButton("Green");
+		this.purpleButton = new JButton("Purple");
+		this.yellowButton = new JButton("Yellow");
+		this.choiceButton = new JButton("Choose Your Color");
 		
 		setupPanel();
 		setupListeners();
@@ -45,8 +57,18 @@ public class ArtPanel extends JPanel
 		this.setBackground(Color.ORANGE);
 		this.add(demoLabel);
 		this.add(canvas);
-		this.add(loadButton);
-		this.add(saveButton);
+		this.add(menuPanel);
+		menuPanel.add(loadButton);
+		menuPanel.add(saveButton);
+		this.add(colorPanel);
+		colorPanel.add(blackButton);
+		colorPanel.add(blueButton);
+		colorPanel.add(brownButton);
+		colorPanel.add(redButton);
+		colorPanel.add(greenButton);
+		colorPanel.add(purpleButton);
+		colorPanel.add(yellowButton);
+		colorPanel.add(choiceButton);
 	}
 	
 	private void setupListeners()
@@ -120,5 +142,6 @@ public class ArtPanel extends JPanel
 		layout.putConstraint(SpringLayout.EAST, canvas, -50, SpringLayout.EAST, this);
 		layout.putConstraint(SpringLayout.SOUTH, canvas, -34, SpringLayout.SOUTH, this);
 		layout.putConstraint(SpringLayout.WEST, canvas, -750, SpringLayout.EAST, this);
+		layout.putConstraint(SpringLayout.SOUTH, menuPanel, 50, SpringLayout.SOUTH, colorPanel);
 	}
 }

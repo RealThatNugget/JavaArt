@@ -23,7 +23,7 @@ public class CanvasPanel extends JPanel
 		super();
 		
 		this.app = app;
-		this.currentCanvas = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
+		this.currentCanvas = new BufferedImage(700, 1000, BufferedImage.TYPE_INT_ARGB);
 		this.stamp = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
 		
 		setupPanel();
@@ -65,7 +65,7 @@ public class CanvasPanel extends JPanel
 	
 	public void setupPanel()
 	{
-		this.setPreferredSize(new Dimension(700, 700));
+		this.setPreferredSize(new Dimension(700, 1000));
 		this.setBackground(Color.RED);
 		this.currentColor = Color.CYAN;
 	}
