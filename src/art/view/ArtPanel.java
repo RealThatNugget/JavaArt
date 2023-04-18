@@ -5,6 +5,8 @@ import art.controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.event.*;
+import java.util.Hashtable;
 
 public class ArtPanel extends JPanel
 {
@@ -25,6 +27,9 @@ public class ArtPanel extends JPanel
 	private JButton saveButton;
 	private JButton loadButton;
 	private JButton eraseButton;
+	private final int MINIMUM_WIDTH = 1;
+	private final int MAXIMUM_WIDTH = 50;
+	private JSlider widthSlider;
 	
 	public ArtPanel(Controller app)
 	{
@@ -47,11 +52,18 @@ public class ArtPanel extends JPanel
 		this.yellowButton = new JButton("Yellow");
 		this.choiceButton = new JButton("Choose Your Color");
 		this.eraseButton = new JButton("Erase Canvas");
+		this.widthSlider = new JSlider(MINIMUM_WIDTH);
 		
 		setupPanel();
 		setupListeners();
 		setupLayout();
 	}
+
+	private void setLabelTable()
+	{
+		
+	}
+
 	
 	private void setupPanel()
 	{
